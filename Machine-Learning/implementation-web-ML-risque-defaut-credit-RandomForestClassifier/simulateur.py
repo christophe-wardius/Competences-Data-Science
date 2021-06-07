@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
  
 # chargement du modèle entraîné via pickle
-classifier_pickle = pickle.load(open('classifier-pickle.pkl','rb'))
+classifier_pickle = pickle.load(open('https://christophe-wardius.fr/projets/prediction-credit/classifier-pickle.pkl','rb'))
 
 @st.cache()
   
