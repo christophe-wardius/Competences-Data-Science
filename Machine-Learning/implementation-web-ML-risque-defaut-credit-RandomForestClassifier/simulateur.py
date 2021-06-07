@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+from sklearn.ensemble import RandomForestClassifier 
  
 # chargement du modèle entraîné via pickle
 pickle_fichier = pickle.open('https://christophe-wardius.fr/projets/prediction-credit/classifier-pickle.pkl', 'rb')
