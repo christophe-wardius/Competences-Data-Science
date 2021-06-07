@@ -4,7 +4,7 @@ import streamlit as st
  
 # chargement du modèle entraîné via pickle
 pickle_fichier = requests.get('https://christophe-wardius.fr/projets/prediction-credit/classifier-pickle.pkl')
-classifier_pickle = pickle.load(pickle_fichier.content)
+classifier_pickle = pickle.load(pickle_fichier)
 
 @st.cache()
   
