@@ -5,7 +5,7 @@ import streamlit as st
  
 # chargement du modèle entraîné via pickle
 pickle_in = open('classifier-pickle.pkl', 'rb') 
-classifier-pickle = pickle.load(pickle_in)
+classifier_pickle = pickle.load(pickle_in)
  
 @st.cache()
   
@@ -31,7 +31,7 @@ def prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History):
     LoanAmount = LoanAmount / 1000
  
     # Réalisation de la prediction personnalisée 
-    prediction = classifier-pickle.predict( 
+    prediction = classifier_pickle.predict( 
         [[Gender, Married, ApplicantIncome, LoanAmount, Credit_History]])
      
     if prediction == 0:
