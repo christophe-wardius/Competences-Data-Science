@@ -2,9 +2,8 @@ import pickle
 import streamlit as st
  
 # chargement du modèle entraîné via pickle
-pickle_in = open('https://github.com/christophe-wardius/Competences-Data-Science/blob/main/Machine-Learning/implementation-web-ML-risque-defaut-credit-RandomForestClassifier/classifier-pickle.pkl', 'rb') 
-classifier_pickle = pickle.load(pickle_in)
- 
+classifier_pickle = pickle.load(open('classifier-pickle.pkl','rb'))
+
 @st.cache()
   
 # Fonction qui réalisera la prédiction en utilisant les données entrées par l'utilisateur
