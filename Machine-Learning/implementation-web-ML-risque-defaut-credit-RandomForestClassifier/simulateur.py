@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
  
 # chargement du modèle entraîné via pickle
-pickle_in = open('https://github.com/christophe-wardius/Competences-Data-Science/blob/main/Machine-Learning/implementation-web-ML-risque-defaut-credit-RandomForestClassifier/classifier-pickle.pkl', 'rb') 
+pickle_in = open('https://github.com/christophe-wardius/Competences-Data-Science/blob/main/Machine-Learning/implementation-web-ML-risque-defaut-credit-RandomForestClassifier/classifier-pickle.pkl?raw=true', 'rb') 
 classifier_pickle = pickle.load(pickle_in)
  
 @st.cache()
