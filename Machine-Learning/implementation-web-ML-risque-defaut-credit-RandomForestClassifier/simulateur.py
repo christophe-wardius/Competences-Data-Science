@@ -1,5 +1,3 @@
-%%writefile simulateur.py
- 
 import pickle
 import streamlit as st
  
