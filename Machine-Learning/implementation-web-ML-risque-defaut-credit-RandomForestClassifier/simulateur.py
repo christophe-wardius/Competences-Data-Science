@@ -3,7 +3,7 @@ import streamlit as st
 from sklearn.ensemble import RandomForestClassifier 
  
 # chargement du modèle entraîné via pickle
-pickle_fichier = pickle.open('https://christophe-wardius.fr/projets/prediction-credit/classifier-pickle.pkl', 'rb')
+pickle_fichier = open('https://christophe-wardius.fr/projets/prediction-credit/classifier-pickle.pkl', 'rb')
 classifier_pickle = pickle.load(pickle_fichier)
 
 @st.cache()
