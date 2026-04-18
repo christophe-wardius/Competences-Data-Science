@@ -1,1 +1,7 @@
-<h1>Compétences Business Intelligence & data modelling liées à la data-science</h1>
+<h1>Compétences Business Intelligence (data modelling & data visualisation)</h1>
+<h2>Analyses NLP dans Power BI</h2>
+<li>Usage d'un environnement Python dédié en local.</li>
+<li>Script Python de vérification que l'environnement Python et les modules sont correctement chargés.</li>
+<li>Analyses NLP en Python.</li>
+<li>Restitutions visuelles uniquement avec Power BI.</li>
+<li>Versionning sous Git de Power BI au format *.pbip</li>
