@@ -1,0 +1,65 @@
+table python_envir
+	lineageTag: 90eabaa4-95ac-4b34-a59d-ce9e35aa6a91
+
+	column python_executable
+		dataType: string
+		lineageTag: 86122be0-312e-40a1-a612-2cb97affc061
+		summarizeBy: none
+		sourceColumn: python_executable
+
+		annotation SummarizationSetBy = Automatic
+
+	column python_version
+		dataType: string
+		lineageTag: 06f061ba-b62a-4611-9fc2-f37848efaa8b
+		summarizeBy: none
+		sourceColumn: python_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column spacy_version
+		dataType: string
+		lineageTag: 3cf07992-c10c-4b4d-b1e6-cfe3180b5f2a
+		summarizeBy: none
+		sourceColumn: spacy_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column spacy_model
+		dataType: string
+		lineageTag: 165010da-3c1f-4636-b788-0e33f34b180e
+		summarizeBy: none
+		sourceColumn: spacy_model
+
+		annotation SummarizationSetBy = Automatic
+
+	column spacy_model_version
+		dataType: string
+		lineageTag: ca8d32f8-da7c-4b39-8dcc-554736e85cef
+		summarizeBy: none
+		sourceColumn: spacy_model_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column language
+		dataType: string
+		lineageTag: 8b07915e-c4f4-4e8f-9198-f9a8bb5aea52
+		summarizeBy: none
+		sourceColumn: language
+
+		annotation SummarizationSetBy = Automatic
+
+	partition python_envir = m
+		mode: import
+		source =
+				let
+				    Source = Python.Execute("import sys#(lf)import pandas as pd#(lf)import spacy#(lf)#(lf)# Chargement du modèle spaCy FR#(lf)nlp = spacy.load(""fr_core_news_sm"")#(lf)#(lf)# DataFrame de diagnostic environnement#(lf)dataset = pd.DataFrame({#(lf)    ""python_executable"": [sys.executable],#(lf)    ""python_version"": [sys.version.split()[0]],#(lf)    ""spacy_version"": [spacy.__version__],#(lf)    ""spacy_model"": [""fr_core_news_sm""],#(lf)    ""spacy_model_version"": [nlp.meta.get(""version"", ""inconnue"")],#(lf)    ""language"": [nlp.meta.get(""lang"", ""inconnue"")]#(lf)})"),
+				    dataset1 = Source{[Name="dataset"]}[Value],
+				    #"Type modifié" = Table.TransformColumnTypes(dataset1,{{"python_executable", type text}, {"python_version", type text}, {"spacy_version", type text}, {"spacy_model", type text}, {"spacy_model_version", type text}, {"language", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

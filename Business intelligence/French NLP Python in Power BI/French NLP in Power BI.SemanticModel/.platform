@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "French NLP in Power BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2befa0aa-128f-4922-b729-b9f220be5a3c"
+  }
+}

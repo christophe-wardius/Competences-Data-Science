@@ -1,0 +1,21 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["wind_power_production","python_envir"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table wind_power_production
+ref table python_envir
+ref table DateTableTemplate_d099e7c3-88d4-45dc-b4ca-110a0403c978
+ref table LocalDateTable_2a020b5a-a8c3-4b39-885b-216548adfb7d
+
+ref cultureInfo fr-FR
+

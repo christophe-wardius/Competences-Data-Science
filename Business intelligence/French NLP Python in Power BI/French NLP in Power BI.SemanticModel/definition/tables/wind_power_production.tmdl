@@ -1,0 +1,139 @@
+table wind_power_production
+	lineageTag: 35c767cb-5271-4a3f-a70a-92da9c9af2bf
+
+	column production_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1410c535-5afe-4fe4-860d-eef21b6b1a26
+		summarizeBy: sum
+		sourceColumn: production_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d95291f3-4c2e-4196-a75a-15c7be643fbf
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: ccc641d5-7b81-4ba7-8ed4-9f3546fe5e18
+			defaultHierarchy: LocalDateTable_2a020b5a-a8c3-4b39-885b-216548adfb7d.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column time
+		dataType: string
+		lineageTag: 6ada29db-4f72-457f-bd0f-44028481d22c
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column turbine_name
+		dataType: string
+		lineageTag: cb97fac6-29a9-483c-be20-7a086d12087c
+		summarizeBy: none
+		sourceColumn: turbine_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: 095cb6e9-5b42-480e-9b72-405b059551c6
+		summarizeBy: sum
+		sourceColumn: capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_name
+		dataType: string
+		lineageTag: e72766ca-ec61-4a59-9c66-6e32c77777c9
+		summarizeBy: none
+		sourceColumn: location_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: string
+		lineageTag: d1c62044-df1d-4bfa-b56a-de5825713e8e
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: string
+		lineageTag: 422313b0-ef3c-4560-8911-20805e66bdaf
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 36466632-4011-4e83-8f4b-c63abb3e40f4
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 840dd44a-4c25-42d0-90ee-39b6123123b4
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsible_department
+		dataType: string
+		lineageTag: 095ef344-c17e-4217-ab9a-95c898adb6f3
+		summarizeBy: none
+		sourceColumn: responsible_department
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_speed
+		dataType: string
+		lineageTag: 6aef09c1-db29-475b-911a-f5934e6def76
+		summarizeBy: none
+		sourceColumn: wind_speed
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_direction
+		dataType: string
+		lineageTag: f1a28253-b30c-4108-8ad9-c7adee8a6c7d
+		summarizeBy: none
+		sourceColumn: wind_direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column energy_produced
+		dataType: string
+		lineageTag: b156bb7c-3ac0-4c89-a126-d693aa655e85
+		summarizeBy: none
+		sourceColumn: energy_produced
+
+		annotation SummarizationSetBy = Automatic
+
+	partition wind_power_production = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\__Dossiers.utilisateur\Téléchargements\wind_power_production.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"production_id", Int64.Type}, {"date", type date}, {"time", type text}, {"turbine_name", type text}, {"capacity", Int64.Type}, {"location_name", type text}, {"latitude", type text}, {"longitude", type text}, {"region", type text}, {"status", type text}, {"responsible_department", type text}, {"wind_speed", type text}, {"wind_direction", type text}, {"energy_produced", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

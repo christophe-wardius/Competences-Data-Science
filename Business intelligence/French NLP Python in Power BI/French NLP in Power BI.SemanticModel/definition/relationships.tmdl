@@ -1,0 +1,5 @@
+relationship ccc641d5-7b81-4ba7-8ed4-9f3546fe5e18
+	joinOnDateBehavior: datePartOnly
+	fromColumn: wind_power_production.date
+	toColumn: LocalDateTable_2a020b5a-a8c3-4b39-885b-216548adfb7d.Date
+
