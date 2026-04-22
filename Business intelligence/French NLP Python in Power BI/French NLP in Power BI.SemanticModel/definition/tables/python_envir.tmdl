@@ -49,11 +49,19 @@ table python_envir
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Date du test'
+		dataType: string
+		lineageTag: a107b0e2-3e15-4faa-b1f4-a626b0d81fb0
+		summarizeBy: none
+		sourceColumn: Date du test
+
+		annotation SummarizationSetBy = Automatic
+
 	partition python_envir = m
 		mode: import
 		source =
 				let
-				    Source = Python.Execute("import sys#(lf)import pandas as pd#(lf)import spacy#(lf)#(lf)# Chargement du modèle spaCy FR#(lf)nlp = spacy.load(""fr_core_news_sm"")#(lf)#(lf)# DataFrame de diagnostic environnement#(lf)dataset = pd.DataFrame({#(lf)    ""python_executable"": [sys.executable],#(lf)    ""python_version"": [sys.version.split()[0]],#(lf)    ""spacy_version"": [spacy.__version__],#(lf)    ""spacy_model"": [""fr_core_news_sm""],#(lf)    ""spacy_model_version"": [nlp.meta.get(""version"", ""inconnue"")],#(lf)    ""language"": [nlp.meta.get(""lang"", ""inconnue"")]#(lf)})"),
+				    Source = Python.Execute("import sys#(lf)import pandas as pd#(lf)import spacy#(lf)from datetime import datetime#(lf)from zoneinfo import ZoneInfo#(lf)#(lf)# Date et heure actuelles en GMT de Paris#(lf)date_test = datetime.now(ZoneInfo(""Europe/Paris"")).strftime(""%Y-%m-%d %H:%M:%S %Z"")#(lf)#(lf)# Chargement du modèle spaCy FR#(lf)nlp = spacy.load(""fr_core_news_sm"")#(lf)#(lf)# DataFrame de diagnostic environnement#(lf)dataset = pd.DataFrame({#(lf)    ""Date du test"": [date_test],#(lf)    ""python_executable"": [sys.executable],#(lf)    ""python_version"": [sys.version.split()[0]],#(lf)    ""spacy_version"": [spacy.__version__],#(lf)    ""spacy_model"": [""fr_core_news_sm""],#(lf)    ""spacy_model_version"": [nlp.meta.get(""version"", ""inconnue"")],#(lf)    ""language"": [nlp.meta.get(""lang"", ""inconnue"")]#(lf)})"),
 				    dataset1 = Source{[Name="dataset"]}[Value],
 				    #"Type modifié" = Table.TransformColumnTypes(dataset1,{{"python_executable", type text}, {"python_version", type text}, {"spacy_version", type text}, {"spacy_model", type text}, {"spacy_model_version", type text}, {"language", type text}})
 				in
